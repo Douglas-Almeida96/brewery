@@ -13,7 +13,8 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
-@RestController(value = "/maltes")
+@RestController
+@RequestMapping(value = "/maltes")
 public class MalteController {
 
     @Autowired
@@ -52,6 +53,28 @@ public class MalteController {
         }
     }
 
-    
+    @PutMapping("/{id}")
+    public ResponseEntity<MalteDto> alterar(@RequestBody @Valid MalteForm form,@PathVariable("id") Long id ,
+                                            UriComponentsBuilder uriComponentsBuilder){
+        Malte malte = form.atulizar(id, malteService);
+        try {
+            malteService.alter(malte);
+            URI uri = uriComponentsBuilder.path("maltes/{id}").buildAndExpand(malte.getId()).toUri();
+            return  ResponseEntity.created(uri).body(new MalteDto(malte));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable("id") Long id){
+        try {
+            malteService.delete(id);
+            return  ResponseEntity.ok().build();
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
 }

@@ -26,4 +26,13 @@ public class MalteService {
     public void create(Malte malte) {
         malteRepository.save(malte);
     }
+
+
+    public void alter(Malte malte) {
+        malteRepository.save(malte);
+    }
+
+    public void delete(Long id) {
+        malteRepository.deleteById(id);
+    }
 }

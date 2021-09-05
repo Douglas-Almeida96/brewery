@@ -1,6 +1,8 @@
 package com.douglas.brewery.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,13 +20,14 @@ public class Malte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String nome;
-    private double alfaAcido;
+    private double ebc;
     private double quantidade;
 
-    public Malte(String nome, double alfaAcido, double quantidade) {
+    public Malte(String nome, double ebc, double quantidade) {
         this.nome = nome;
-        this.alfaAcido = alfaAcido;
+        this.ebc = ebc;
         this.quantidade = quantidade;
     }
 }
