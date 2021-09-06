@@ -1,6 +1,6 @@
-package com.douglas.brewery.model.dto;
+package com.douglas.brewery.model.malte.dto;
 
-import com.douglas.brewery.model.Malte;
+import com.douglas.brewery.model.malte.Malte;
 import lombok.Getter;
 
 import java.util.List;

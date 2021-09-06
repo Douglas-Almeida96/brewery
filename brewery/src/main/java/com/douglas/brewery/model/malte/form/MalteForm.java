@@ -1,6 +1,6 @@
-package com.douglas.brewery.model.form;
+package com.douglas.brewery.model.malte.form;
 
-import com.douglas.brewery.model.Malte;
+import com.douglas.brewery.model.malte.Malte;
 import com.douglas.brewery.service.MalteService;
 import lombok.Getter;
 import lombok.Setter;

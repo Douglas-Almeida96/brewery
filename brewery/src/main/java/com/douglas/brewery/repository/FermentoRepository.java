@@ -1,9 +1,9 @@
 package com.douglas.brewery.repository;
 
-import com.douglas.brewery.model.malte.Malte;
+import com.douglas.brewery.model.fermento.Fermento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MalteRepository extends JpaRepository<Malte, Long> {
+public interface FermentoRepository extends JpaRepository<Fermento, Long> {
 }

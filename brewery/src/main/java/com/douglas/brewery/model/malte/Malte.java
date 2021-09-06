@@ -1,8 +1,7 @@
-package com.douglas.brewery.model;
+package com.douglas.brewery.model.malte;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

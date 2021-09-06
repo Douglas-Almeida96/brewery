@@ -1,6 +1,6 @@
 package com.douglas.brewery.service;
 
-import com.douglas.brewery.model.Malte;
+import com.douglas.brewery.model.malte.Malte;
 import com.douglas.brewery.repository.MalteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.douglas.brewery.controller;
 
-import com.douglas.brewery.model.dto.MalteDto;
-import com.douglas.brewery.model.form.MalteForm;
-import com.douglas.brewery.model.Malte;
+import com.douglas.brewery.model.malte.dto.MalteDto;
+import com.douglas.brewery.model.malte.form.MalteForm;
+import com.douglas.brewery.model.malte.Malte;
 import com.douglas.brewery.service.MalteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class MalteController {
     MalteService malteService;
 
     @GetMapping
-    public ResponseEntity<List<MalteDto>> listAll(){
+    public ResponseEntity<List<MalteDto>> getAll(){
         List<Malte> maltes = malteService.findAll();
         if(maltes==null || maltes.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -32,7 +32,7 @@ public class MalteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MalteDto> getMalte(@PathVariable("id") Long id){
+    public ResponseEntity<MalteDto> getById(@PathVariable("id") Long id){
         try {
             Malte malte = malteService.findById(id);
             return ResponseEntity.ok(new MalteDto(malte));
@@ -42,7 +42,7 @@ public class MalteController {
     }
 
     @PostMapping
-    public ResponseEntity<MalteDto> cadastrar(@RequestBody @Valid MalteForm form, UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<MalteDto> create(@RequestBody @Valid MalteForm form, UriComponentsBuilder uriComponentsBuilder){
         Malte malte = form.convert();
         try {
             malteService.create(malte);
@@ -54,7 +54,7 @@ public class MalteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MalteDto> alterar(@RequestBody @Valid MalteForm form,@PathVariable("id") Long id ,
+    public ResponseEntity<MalteDto> update(@RequestBody @Valid MalteForm form,@PathVariable("id") Long id ,
                                             UriComponentsBuilder uriComponentsBuilder){
         Malte malte = form.atulizar(id, malteService);
         try {
