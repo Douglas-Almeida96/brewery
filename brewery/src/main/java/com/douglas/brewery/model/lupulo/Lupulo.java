@@ -1,5 +1,6 @@
 package com.douglas.brewery.model.lupulo;
 
+import com.douglas.brewery.model.receita_has_lupulo.ReceitaLupulo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -22,6 +25,9 @@ public class Lupulo {
     private String nome;
     private double alfaacido;
     private double quantidade;
+
+    @OneToMany(mappedBy = "lupulo")
+    private Set<ReceitaLupulo> receitaLupulos = new HashSet<>();
 
     public Lupulo(String nome, double alfaacido, double quantidade) {
         this.nome = nome;
