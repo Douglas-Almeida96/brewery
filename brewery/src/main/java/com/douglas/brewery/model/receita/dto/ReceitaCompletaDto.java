@@ -37,5 +37,5 @@ public class ReceitaCompletaDto {
         this.receitaMaltes.addAll(receita.getReceitaMaltes()
                 .stream().map(ReceitaMalteDto::new).collect(Collectors.toList()));
     }
-    
+
 }
