@@ -2,19 +2,20 @@ package com.douglas.brewery.model.receita_has_malte.dto;
 
 import com.douglas.brewery.model.receita_has_malte.ReceitaMalte;
 import com.douglas.brewery.model.receita_has_malte.ReceitaMalteId;
+import lombok.Getter;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.Serializable;
 
-public class ReceitaMalteDto {
+@Getter
+public class ReceitaMalteDto implements Serializable {
 
-    private ReceitaMalteId receitaMalteId;
-    private String malteNome;
-    private double quantidade;
+    private static final long serialVersionUID = 1L;
+
+    private String nomeMalte;
+    private Double quantidade;
 
     public ReceitaMalteDto(ReceitaMalte receitaMalte) {
-        this.receitaMalteId = receitaMalte.getId();
-        this.malteNome = receitaMalte.getMalte().getNome();
+        this.nomeMalte = receitaMalte.getMalte().getNome();
         this.quantidade = receitaMalte.getQuantidade();
     }
 

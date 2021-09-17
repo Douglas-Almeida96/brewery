@@ -1,14 +1,11 @@
 package com.douglas.brewery.model.receita_has_malte;
 
-import com.douglas.brewery.model.receita.Receita;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;
 

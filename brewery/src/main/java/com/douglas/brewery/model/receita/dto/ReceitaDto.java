@@ -21,6 +21,6 @@ public class ReceitaDto {
 
     public static List<ReceitaDto> convert(List<Receita> receitas) {
         List<ReceitaDto> receitaDtos = receitas.stream().map(ReceitaDto::new).collect(Collectors.toList());
-        return null;
+        return receitaDtos;
     }
 }
