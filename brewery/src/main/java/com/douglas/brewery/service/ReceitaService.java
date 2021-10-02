@@ -1,10 +1,10 @@
 package com.douglas.brewery.service;
 
-import com.douglas.brewery.model.fermento.Fermento;
+import com.douglas.brewery.model.mapper.ReceitaMapper;
 import com.douglas.brewery.model.receita.Receita;
+import com.douglas.brewery.model.receita.form.ReceitaForm;
 import com.douglas.brewery.model.receita_has_lupulo.ReceitaLupulo;
 import com.douglas.brewery.model.receita_has_malte.ReceitaMalte;
-import com.douglas.brewery.repository.FermentoRepository;
 import com.douglas.brewery.repository.ReceitaRepository;
 import com.douglas.brewery.repository.hasReceita.ReceitaLupuloRepository;
 import com.douglas.brewery.repository.hasReceita.ReceitaMalteRepository;
@@ -16,24 +16,30 @@ import java.util.List;
 @Service
 public class ReceitaService {
 
-    @Autowired
     ReceitaRepository receitaRepository;
-
-    @Autowired
     ReceitaLupuloRepository receitaLupuloRepository;
-
-    @Autowired
     ReceitaMalteRepository receitaMalteRepository;
+    FermentoService fermentoService;
+
+    private final ReceitaMapper receitaMapper = ReceitaMapper.INSTANCE;
 
     @Autowired
-    FermentoRepository fermentoRepository;
+    public ReceitaService(ReceitaRepository receitaRepository,
+                          ReceitaLupuloRepository receitaLupuloRepository,
+                          ReceitaMalteRepository receitaMalteRepository,
+                          FermentoService fermentoService) {
+        this.receitaRepository = receitaRepository;
+        this.receitaLupuloRepository = receitaLupuloRepository;
+        this.receitaMalteRepository = receitaMalteRepository;
+        this.fermentoService = fermentoService;
+    }
 
     public List<Receita> findAll() {
         List<Receita> receita = receitaRepository.findAll();
         return  receita;
     }
 
-    public Receita getById(Long id) {
+    public Receita findById(Long id) {
         Receita receita = receitaRepository.findById(id).get();
         return  receita;
     }
@@ -48,10 +54,22 @@ public class ReceitaService {
         return maltes;
     }
 
-  /*  public Fermento getFermentoReceita(Long id){
-        Fermento fermento = fermentoRepository.findById(id).get();
-        return fermento;
-    }*/
+    public Receita create(ReceitaForm receitaForm) {
+        ReceitaMalte receitaMalte = new ReceitaMalte();
+        Receita receita = receitaMapper.dtoToModel(receitaForm);
+        receita.setFermento(fermentoService.findById(receitaForm.getIdFermento()));
+        Receita saveReceita = receitaRepository.save(receita);
+        return  saveReceita;
+    }
+
+    public void delete(Long id) {
+        List<ReceitaMalte> maltes = getMalteReceita(id);
+        receitaMalteRepository.deleteAll(maltes);
+        List<ReceitaLupulo> lupulos = getLupuloReceita(id);
+        receitaLupuloRepository.deleteAll(lupulos);
+        receitaRepository.deleteById(id);
+
+    }
 
 
 }

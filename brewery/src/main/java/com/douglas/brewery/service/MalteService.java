@@ -19,8 +19,7 @@ public class MalteService {
     }
 
     public Malte findById(Long id) {
-        Malte malte = malteRepository.findById(id).get();
-        return malte;
+        return malteRepository.findById(id).get();
     }
 
     public void create(Malte malte) {

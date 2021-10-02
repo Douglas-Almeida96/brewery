@@ -30,31 +30,5 @@ public class ReceitaLupulo {
 
     private Double quantidade;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
 
-        ReceitaLupulo that = (ReceitaLupulo) o;
-
-        if (!Objects.equals(id, that.id))
-            return false;
-        if (!Objects.equals(receita, that.receita))
-            return false;
-        if (!Objects.equals(lupulo, that.lupulo))
-            return false;
-
-        return Objects.equals(quantidade, that.quantidade);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (receita != null ? receita.hashCode() : 0);
-        result = 31 * result + (lupulo != null ? lupulo.hashCode() : 0);
-        result = 31 * result + (quantidade != null ? quantidade.hashCode() : 0);
-        return result;
-    }
 }

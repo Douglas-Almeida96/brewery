@@ -18,9 +18,4 @@ public class ReceitaMalteDto implements Serializable {
         this.nomeMalte = receitaMalte.getMalte().getNome();
         this.quantidade = receitaMalte.getQuantidade();
     }
-
-   /* public List<ReceitaMalteDto> convert(List<ReceitaMalte> receitaMaltes){
-        List<ReceitaMalteDto> dtos = receitaMaltes.stream().map(ReceitaMalteDto::new).collect(Collectors.toList());
-        return  dtos;
-    }*/
 }

@@ -22,19 +22,4 @@ public class ReceitaMalteId implements Serializable {
     private Long malteId;
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        ReceitaMalteId that = (ReceitaMalteId) o;
-        return Objects.equals(receitaId, that.receitaId) && Objects.equals(malteId, that.malteId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(receitaId, malteId);
-    }
 }

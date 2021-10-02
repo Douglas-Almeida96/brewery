@@ -11,7 +11,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -33,25 +32,5 @@ public class ReceitaMalte {
 
     private Double quantidade;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        ReceitaMalte that = (ReceitaMalte) o;
-
-        if (!Objects.equals(id, that.id)) return false;
-        if (!Objects.equals(receita, that.receita)) return false;
-        if (!Objects.equals(malte, that.malte)) return false;
-        return Objects.equals(quantidade, that.quantidade);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (receita != null ? receita.hashCode() : 0);
-        result = 31 * result + (malte != null ? malte.hashCode() : 0);
-        result = 31 * result + (quantidade != null ? quantidade.hashCode() : 0);
-        return result;
-    }
 }

@@ -27,7 +27,7 @@ public class ReceitaCompletaDto {
     public List<ReceitaLupuloDto> receitaLupulos;
 
     public ReceitaCompletaDto(Receita receita, List<ReceitaLupulo> lupulos,
-                              List<ReceitaMalte> maltes /*, Fermento fermento*/){
+                              List<ReceitaMalte> maltes){
         this.id = receita.getId();
         this.nome = receita.getNome();
         this.estilo = receita.getEstilo();

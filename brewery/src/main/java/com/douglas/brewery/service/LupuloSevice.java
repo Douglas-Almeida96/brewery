@@ -14,8 +14,7 @@ public class LupuloSevice {
     LupuloRepository lupuloRepository;
 
     public Lupulo findById(Long id) {
-        Lupulo lupulo = lupuloRepository.findById(id).get();
-        return lupulo;
+        return lupuloRepository.findById(id).get();
     }
 
 

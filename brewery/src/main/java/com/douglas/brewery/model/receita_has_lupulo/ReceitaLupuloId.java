@@ -22,19 +22,4 @@ public class ReceitaLupuloId implements Serializable {
     private Long lupuloId;
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        ReceitaLupuloId that = (ReceitaLupuloId) o;
-        return Objects.equals(receitaId, that.receitaId) && Objects.equals(lupuloId, that.lupuloId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(receitaId, lupuloId);
-    }
 }
